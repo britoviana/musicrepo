@@ -208,7 +208,7 @@
 			</div>
       <div class="form-group">
 				<div class="col-10">
-      <button type="submit" name="deletetrack" class="btn btn-danger">Delete</button>
+      <button type="submit" name="deletetrack" class="btn btn-danger">Excluir</button>
       <button onclick="goBack()" name="voltar" class="btn btn-primary">Voltar</button>
       </div>
       </div>

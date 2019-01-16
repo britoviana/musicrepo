@@ -789,6 +789,8 @@ function uploadDir($upload_dir, $id){
 
 	if (!is_dir($upload_dir)) mkdir($upload_dir, 0777, true);
 
+	var_dump($upload_dir);
+
 	return $upload_dir;
 
  }
@@ -890,7 +892,7 @@ function navBar(){
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="search.php">Musicrepo</a>
+						<a class="navbar-brand" href="index.php">MusicDatabase</a>
 					</div>
 
 					<!-- Collect the nav links, forms, and other content for toggling -->
@@ -903,8 +905,6 @@ function navBar(){
 								<li role="separator" class="divider"></li>
 									<li><a href="addartistsolo.php">Adicionar artista solo</a></li>
 									<li><a href="addartist.php">Adicionar banda/grupo</a></li>
-									<li role="separator" class="divider"></li>
-									<li><a href="#">One more separated link</a></li>
 								</ul>
 							</li>
 							<li class="dropdown"><a href="searchmusic.php">Música <span class="sr-only">(current)</span></a></li>

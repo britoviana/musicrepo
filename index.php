@@ -1,4 +1,4 @@
-<?php if (!isset($_SESSION)) session_start();?>
+<?php if (!isset($_SESSION)) session_start(); ob_start();?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -33,9 +33,10 @@
 
 
   <div class="container">
-
-  <div class="row">
+  <div class="row"> 
   <div class="col-lg-12 col-md-12" >
+
+    <h1>Comece aqui</h1>
 
     <form method="get" accept-charset="uft8">
 
@@ -48,87 +49,27 @@
                      <li><a href="searchartist.php">Artista</a></li>
                      <li><a href="searchmusic.php">Música</a></li>
                      <li><a href="searchalbum.php">Álbum</a></li>
-                     <li class="divider"></li>
-                     <li><a href="#all">Anything</a></li>
                    </ul>
                </div>
-               <input type="hidden" name="search_param" value="all" id="search_param">
-               <input type="text" class="form-control" name="busca" id="busca" placeholder="Search artist, music, album...">
+               <input type="hidden" name="search_param" id="search_param">
+               <input type="text" class="form-control" name="busca" id="busca" placeholder="Buscar artista, música, álbum...">
                <span class="input-group-btn">
-                   <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                   <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
                </span>
            </div>
+
 </form>
 </div></div>
 
-
 <?php
 
-if ($_GET['search_param'] == 'searchartist'){
-
-  echo '
-  <div class="row">
-  <div class="col-lg-12 col-md-12">
-
-  <h3>Artistas</h3>';
-  // Get a connection for the database
-  date_default_timezone_set('America/Sao_Paulo');
-  require_once('connection.php');
-
-  $dbh = openConnection();
-
-  $id_album = $_GET['id'];
-
-  // Create a query for the database
-  $query = "SELECT id_artista as id, nome, tipo from artista
-            WHERE nome LIKE '%". $_GET['busca'] ."%' OR nome_completo LIKE '%". $_GET['busca'] . "%'
-            ORDER BY nome";
-
-  $sth = $dbh->prepare($query);
+if ($_GET['search_param']){
 
 
-  // Get a response from the database by sending the connection
-  // and the query
-  $response = $sth->execute();
-
-
-  // If the query executed properly proceed
-  if($response){
-
-  echo '<div class="row"><div class="col-lg-7 col-md-7">
-  <table id="listaartista" class="table">
-  <tr><td><b>Nome</b></td>
-      <td></td>
-      <td></td>
-  </tr></div>';
-
-  // fetchAll will return a row of data from the query
-  // until no further data is available
-  $rows = $sth->fetchAll(PDO::FETCH_ASSOC);
-
-
-  foreach($rows as $row){
-    echo '<tr><td class="col-lg-10 col-md-10">' .
-    $row['nome'] . '</td><td class="col-lg-1 col-md-1">';
-    if ($_SESSION['nivel_acesso'] == 1) echo '<center><a href="updateartist.php?id='. $row['id'] .'" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></center></td>';
-    echo '<td class="col-lg-1 col-md-1"><center><a href="artistprofile.php?id='. $row['id'] .'" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></a></center></td>';
-  ;
-    echo '</tr>';
-  }
-    echo '</table>';
-
-  }
-  echo '</div></div></div>';
-
-
-  // Close connection to the database
-  $dbh = null;
-  $response = null;
+  header("Location:".$_GET['search_param']."?busca=".$_GET['busca']);
+exit();
 
 }
-
-
-
 ?>
 
 </div>

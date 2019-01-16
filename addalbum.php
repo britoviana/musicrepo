@@ -22,7 +22,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-		<title>Adicionar Album</title>
+		<title>Adicionar Álbum</title>
 
 	</head>
 	<body>
@@ -295,7 +295,7 @@
 
 					            echo '<br><form action="musicalbum.php?id=' . $id_album . '" method="post" accept-charset="utf8"><div class="col-12 alert alert-success alert-dismissible" role="alert">
 					        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					        <strong>SUBMETERU!</strong> Album '.$nome.' adicionado. <button type="submit" name="submit" class="btn btn-success btn-sm">Cadastrar músicas</button>
+					        <strong>SUBMETERU!</strong> Álbum '.$nome.' adicionado. <button type="submit" name="submit" class="btn btn-success btn-sm">Cadastrar músicas</button>
 					        		</div>';
 
 
@@ -312,7 +312,7 @@
 
 					        echo '<br><div class="alert alert-warning alert-dismissible" role="alert">
 					    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					    <strong>Album não adicionado!</strong> Preencha os campos obrigatórios:</br>';
+					    <strong>Álbum não adicionado!</strong> Preencha os campos obrigatórios:</br>';
 
 					        foreach($data_missing as $missing){
 
@@ -326,7 +326,7 @@
 
 		 echo '<form action="addalbum.php" method="post" accept-charset="uft8" enctype="multipart/form-data">
 
-		<h1 class="col-10">Adicionar album</h1>
+		<h1 class="col-10">Adicionar álbum</h1>
 
 
 		<div class="form-group">
@@ -394,7 +394,7 @@
 		</div>
 
 		<div class="form-group">
-		 <label class="control-label">Capa do album</label>
+		 <label class="control-label">Capa do álbum</label>
 		 <div class="col-12">
 				<input class="input-group" type="file" name="cover" accept="media_type" />
 			</div>

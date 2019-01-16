@@ -475,7 +475,7 @@ if (isset($_POST['deletetrack'])){
 
   echo '<table id="listamusica" class="table table-hover table-stripped table-responsive">
 
-  <h2>'.$row[0]['album'].'</h2>
+  <h2><a style="text-decoration:none;" href="editalbum.php?id='.$id_album.'">'.$row[0]['album'].'</a></h2>
   <thead>
   <tr><th><b>#</b></th>
   <th>Faixa</th>

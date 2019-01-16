@@ -203,7 +203,7 @@
 								      if ($fileSize < 5*1048576 && $fileSize > 0) $is_moved = move_uploaded_file($tmp_file,$upload_dir.$userfile);
 								      else $errMSG = '<div class="alert alert-warning alert-dismissible" role="alert">
 								                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-								                     <strong>Sorry, your file is too large. Max 5MB.</strong></div>';
+								                     <strong>Desculpe, arquivo muito grande. Máximo 5Mb.</strong></div>';
 
 								   } else {
 								      die("Upload failed with error code " . $_FILES['avatar']['error']);
@@ -213,7 +213,7 @@
 								} else {
 								 $errMSG = '<div class="alert alert-warning alert-dismissible" role="alert">
 								           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-								           <strong>Sorry, only JPG, JPEG, PNG & GIF files are allowed.</strong></div>';
+								           <strong>Desculpe, apenas arquivos JPG, JPEG, PNG & GIF são permitidos.</strong></div>';
 
 								}
 

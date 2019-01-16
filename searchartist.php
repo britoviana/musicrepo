@@ -167,7 +167,7 @@
       }
 
     }  else if ($count < 1){
-      echo '<div class="col-lg-7 col-md-7"> <h2>Nenhuma ocorrência encontrada</h2>';
+      echo '<div class="col-lg-12"> <h2>Nenhuma ocorrência encontrada</h2>';
     } else {
       '<h2>Desculpe, houve algum erro na busca</h2>';
     }

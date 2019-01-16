@@ -174,8 +174,6 @@
 
 				if (!empty($_FILES['cover']['name'])){
 
-					echo "Foi";
-
 					//Select current cover FILE
 
 					$sth = $dbh->prepare('SELECT f.id, f.file as cover FROM album AS al
@@ -188,7 +186,7 @@
 					if ($cover_exists == 1){
 						$cover_old = $result['cover'];
 						$id_old = $result['id'];
-						$remove_dir = uploadDir('album_files/');
+						$remove_dir = uploadDir('album_files/', $id_album);
 					}
 
 					// Add new cover FILE
@@ -198,7 +196,8 @@
 					$fileSize = $_FILES['cover']['size'];
 
 					// upload directory
-					$upload_dir = uploadDir('album_files/', $_GET[id]);
+					$upload_dir = uploadDir('album_files/', $id_album);
+
 
 					// get file extension
 					$fileExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION));
@@ -508,7 +507,7 @@
 			<div class="form-group">
 				<div class="col-12">
 					<button type="submit" name="updatealbum" class="btn btn-success btn-block">Atualizar</button></br>
-					<button type="button" class="btn btn-danger col-xs-2" data-toggle="modal" data-target="#confirmDelete">Deletar</button>
+					<button type="button" class="btn btn-danger col-xs-2" data-toggle="modal" data-target="#confirmDelete">Excluir</button>
 				</div>
 			</div>
 

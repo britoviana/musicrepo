@@ -354,8 +354,6 @@
 
 						if (!empty($_FILES['avatar']['name'])){
 
-							echo "entrou";
-
 							//Select current avatar FILE
 
 							$sth = $dbh->prepare('SELECT f.id, f.file as avatar FROM artista AS a
@@ -394,7 +392,6 @@
 
 								if(array_key_exists('avatar', $_FILES)){
 								 if ($_FILES['avatar']['error'] === UPLOAD_ERR_OK) {
-										echo 'upload was successful';
 
 										// Check file size '5MB'
 										if ($fileSize < 5*1048576 && $fileSize > 0) $is_moved = move_uploaded_file($tmp_file,$upload_dir.$userfile);
@@ -672,7 +669,7 @@
 						<div class="col-12">
 							<button type="submit" name="submit" value="update_person" class="btn btn-success btn-block">Atualizar</button>
 							<a class="btn btn-info col-md-3" style="margin-top: 5px;" href="searchartist.php" role="button">Voltar</a>
-							<button type="button" style="margin-top: 5px;margin-left: 228px;" class="btn btn-danger col-md-3" data-toggle="modal" data-target="#confirmDelete">Deletar</button>
+							<button type="button" style="margin-top: 5px;margin-left: 228px;" class="btn btn-danger col-md-3" data-toggle="modal" data-target="#confirmDelete">Excluir</button>
 
 
 						</div>
@@ -777,7 +774,7 @@
 						<div class="col-12">
 						<button type="submit" name="submit" value="update_band" class="btn btn-success btn-block">Atualizar</button>
 						<a class="btn btn-info col-md-3" style="margin-top: 5px;" href="searchartist.php" role="button">Voltar</a>
-						<button type="button" style="margin-top: 5px;margin-left: 226px;" class="btn btn-danger col-md-3" data-toggle="modal" data-target="#confirmDelete">Deletar</button>
+						<button type="button" style="margin-top: 5px;margin-left: 226px;" class="btn btn-danger col-md-3" data-toggle="modal" data-target="#confirmDelete">Excluir</button>
 
 						</div>
 					</div>
