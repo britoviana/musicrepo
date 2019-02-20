@@ -32,21 +32,25 @@
 
 
 <div class="container">
-  <div class="row col-lg-4 col-lg-offset-4">
+  <div class="row col-lg-4 col-lg-offset-4 col-sm-6 col-sm-offset-4">
 <form class="form-horizontal" action="logged.php" method="post">
   <div class="form-group">
     <div class="col-sm-10">
-      <input type="text" class="form-control" name="usuario" id="usuario" placeholder="usuário">
+      <h3>Acesso administrador</h3>
+      <br>
+      <label for="username">Usuário</label>
+      <input type="text" class="form-control" name="usuario" id="usuario">
     </div>
   </div>
   <div class="form-group">
     <div class="col-sm-10">
-      <input type="password" class="form-control" name="senha" id="senha" placeholder="senha">
+      <label for="password">Senha</label>
+      <input type="password" class="form-control" name="senha" id="senha">
     </div>
   </div>
   <div class="form-group">
     <div class="col-sm-10">
-      <button type="submit" name="submit" class="btn btn-primary btn-block">Log in</button>
+      <button type="submit" name="submit" class="btn btn-primary btn-lg btn-block">Entrar</button>
     </div>
   </div>
 </form>

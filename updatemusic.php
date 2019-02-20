@@ -127,7 +127,7 @@
 			<div class="row">
 			<div class="col-md-6" >
 
-		<h1>Editar música</h1>
+		<h2>Editar música</h2>
 
 		<form action="musicalbum.php?id='.$id_album.'" method="post" accept-charset="utf8">
 

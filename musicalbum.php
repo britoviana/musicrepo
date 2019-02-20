@@ -54,9 +54,6 @@
 
     <div class="container">
 
-
-
-
         <?php
 
         if ((!isset($_SESSION['usuario'])) || !($_SESSION['nivel_acesso'] == '1')) {
@@ -71,7 +68,7 @@
 	} else {
 
         echo '<div class="col-lg-12 col-md-12">
-              <h3>Adicionar faixa ao album</h3>
+              <h3>Adicionar faixa ao álbum</h3>
               <form class="form-inline" action="musicalbum.php?id='.$_GET['id'].'" method="post">';
 
         ?>
@@ -120,14 +117,14 @@
      </div>
 
    </form>
+ </div>
 
-</div>
-</div>
+
 
   <div class="container" style="margin-top: 10px;">
 
-  <div class="row" style="margin-top: 5px;">
-  <div class="col-md-11" >
+  <div class="row" style="margin-top: 100px;">
+  <div class="col-lg-11 col-md-11" >
 
   <?php
   // Get a connection for the database
@@ -233,7 +230,7 @@
 
               echo '<br><div class="alert alert-success alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <strong>SUBMETERU!</strong> Faixa adicionada.
+          <strong>SUCESSO!</strong> Faixa adicionada.
         </div>
               ';
 
@@ -249,11 +246,13 @@
           }
       } else {
 
-          echo 'Preencha os campos obrigatórios:<br />';
+          echo '<div class="alert alert-warning alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      Preencha os campos obrigatórios:</br>';
 
           foreach($data_missing as $missing){
 
-              echo "$missing<br />";
+              echo "$missing </div><br />";
           }
       }
   }
@@ -394,13 +393,13 @@
 
           echo '<br><div class="alert alert-success alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>SUBMETERU!</strong> Faixa atualizada.
+      <strong>Sucesso!</strong> Faixa atualizada.
     </div>';
 
         } else {
           echo '<br><div class="alert alert-danger alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      <strong>ERROR!</strong> Faixa não atualizada.
+      <strong>ERRO!</strong> Faixa não atualizada.
     </div>';
 
         }
@@ -436,7 +435,7 @@ if (isset($_POST['deletetrack'])){
         echo '
         <br><div class="alert alert-success alert-dismissible" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <strong>SUBMETERU!</strong> Faixa removida.
+    <strong>Sucesso!</strong> Faixa removida.
   </div>';
 
         $sth = null;
@@ -477,9 +476,9 @@ if (isset($_POST['deletetrack'])){
 
   <h2><a style="text-decoration:none;" href="editalbum.php?id='.$id_album.'">'.$row[0]['album'].'</a></h2>
   <thead>
-  <tr><th><b>#</b></th>
+  <th>#</th>
   <th>Faixa</th>
-  <th>Album</th>
+  <th>Álbum</th>
   </thead>';
 
   echo '<tbody>';
@@ -487,15 +486,13 @@ if (isset($_POST['deletetrack'])){
     echo '<tr><td>' .
     $rows['faixa'] . '</td><td class="col-md-8">' .
     $rows['musica'] . '</td><td class="col-md-12">'.
-    $rows['album'] . '</td><td>'.
-    '<a href="updatemusic.php?id='. $rows['id'] .'&album='.$rows['id_album'].'"><span class="glyphicon glyphicon-pencil" aria-hidden="true" style="color:#f0ad4e"></span></a></td>';
+    $rows['album'] . '</td>'.
+    '<td><a href="updatemusic.php?id='. $rows['id'] .'&album='.$rows['id_album'].'"><span class="glyphicon glyphicon-pencil" aria-hidden="true" style="color:#f0ad4e"></span></a></td>';
     //'<button type="button" name="deletetrack" class="btn btn-xs btn-danger" data-toggle="modal" data-target=".confirma-exclusao">Delete</button></td>';
     echo '</tr>';
   }
     echo '</tbody>
           </table>';
-
-
 
   // Close connection to the database
   $dbh = null;
@@ -503,12 +500,6 @@ if (isset($_POST['deletetrack'])){
 }
 }
   ?>
-  </div>
-  </div>
-  </div>
-
-
-
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

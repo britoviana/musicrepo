@@ -339,7 +339,7 @@
 
 				        echo '<br><div class="alert alert-success alert-dismissible" role="alert">
 				    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				    <strong>SUBMETERU!</strong> Album atualizado.
+				    <strong>Sucesso!</strong> Album atualizado.
 				  </div>';
 
 				        $sth = null;
@@ -382,7 +382,7 @@
 
 		echo '<br><div class="alert alert-success alert-dismissible text-center" role="alert">
 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-<strong>SUBMETERU!</strong> Album '.$row['nome_album'].' removido.
+<strong>Sucesso!</strong> Álbum '.$row['nome_album'].' removido.
 </div><a href="searchalbum.php" role="button" name="voltar" class="btn btn-default btn-lg btn-block">Voltar</a>
 ';
 
@@ -432,7 +432,7 @@
 
 			<form action="editalbum.php?id="'.$id_album.'" method="post" accept-charset="uft8" enctype="multipart/form-data">
 
-			<h1 class="col-10">Editar album</h1>
+			<h2 class="col-10">Editar album</h2>
 
 			<div class="form-group">
 				<label for="nome" class="col-12 col-form-label">Nome do álbum</label>

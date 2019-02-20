@@ -922,16 +922,15 @@ function navBar(){
 						echo '</ul>
 
 						<ul class="nav navbar-nav navbar-right">';
-							if (isset($_SESSION['usuario'])) echo '<p class="navbar-text">Modo administrador</p>
-							<li><a href="logout.php">Logout</a></li>';
+							if (isset($_SESSION['usuario'])) echo '<p class="navbar-text">Modo administrador</p>';
 							echo '<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
 </span></a>
-								<ul class="dropdown-menu">
-									<li><a href="login.php">Login</a></li>
-									<li><a href="#">Something else here</a></li>
-									<li role="separator" class="divider"></li>
-									<li><a href="#">Separated link</a></li>
+								<ul class="dropdown-menu">';
+								if (isset($_SESSION['usuario'])) echo '
+								<li><a href="logout.php">Sair</a></li>';
+								else echo '<li><a href="login.php">Entrar</a></li>';
+								echo '
 								</ul>
 							</li>
 						</ul>
