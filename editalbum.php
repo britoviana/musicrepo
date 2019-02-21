@@ -245,9 +245,9 @@
 					<strong>Arquivo adicionado com sucesso!</strong></div>';
 					//"new record succesfully inserted ...";
 
-					 chmod($upload_dir, 0755);
+					chmod($upload_dir, 0755);
 
-					 //header("refresh:5;"); // redirects image view page after 5 seconds.
+					//header("refresh:5;"); // redirects image view page after 5 seconds.
 
 					$sth = $dbh->prepare("UPDATE album SET cover = LAST_INSERT_ID()
 									 WHERE id_album = :id_album; DELETE FROM file WHERE id = :id_file;");

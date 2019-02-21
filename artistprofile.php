@@ -233,10 +233,10 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
             echo "<img src='artist_files/".$_GET['id']."/".$row['avatar']."' width='300' height='300' alt='getimagesize() example' class='img-circle col-md-offset-4'/>";
           }
 
-					echo '<h1 href="'.$row[webpage].'" class="col-12">'.$row[nome].' <small>'.$row[nome_completo].'</small></h1>
-          <h5>'.$row['nacionalidade'].', nasceu no dia '. date('d/m/Y', strtotime($row[data_nasc])) .' @ '. $row[local_nasc];
-          if (isset($row[data_morte])) echo ' morreu no dia '. date('d/m/Y', strtotime($row[data_morte])).' @ '.$row['local_morte'].'</h5>';
-          echo '<a style="text-decoration:none;" href="'.$row[webpage].'"<p>'.$row['webpage'].'</p></a>';
+					echo '<h1 href="'.$row['webpage'].'" class="col-12">'.$row['nome'].' <small>'.$row['nome_completo'].'</small></h1>
+          <h5>'.$row['nacionalidade'].', nasceu no dia '. date('d/m/Y', strtotime($row['data_nasc'])) .' @ '. $row['local_nasc'];
+          if (isset($row['data_morte'])) echo ' morreu no dia '. date('d/m/Y', strtotime($row['data_morte'])).' @ '.$row['local_morte'].'</h5>';
+          echo '<a style="text-decoration:none;" href="'.$row['webpage'].'"<p>'.$row['webpage'].'</p></a>';
           if (isset($row['bio'])) echo '<blockquote ><p class="lead">'.$row['bio'].'</p></blockquote>';
 
 
@@ -266,7 +266,7 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
           echo '<div class="row">
           <div class="col-lg-6 col-md-6">
           <h3>Músicas</h3>';
-          foreach ($rows as $row) echo '<a style="text-decoration:none;" href="music.php?id='.$row[id_musica].'"><h5>'.$row[nome_musica].'</h5></a>';
+          foreach ($rows as $row) echo '<a style="text-decoration:none;" href="music.php?id='.$row['id_musica'].'"><h5>'.$row['nome_musica'].'</h5></a>';
           echo '</div>';
 
           $query = "SELECT al.nome_album, al.id_album FROM album AS al
@@ -283,7 +283,7 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
           echo '<div class="col-lg-6 col-md-6">
           <h3>Albums</h3>';
 
-          foreach ($rows as $row) echo '<a style="text-decoration:none;" href="album.php?id='.$row[id_album].'"><h5>'.$row[nome_album].'</h5></a>';
+          foreach ($rows as $row) echo '<a style="text-decoration:none;" href="album.php?id='.$row['id_album'].'"><h5>'.$row['nome_album'].'</h5></a>';
 
           echo '</div> </div>';
 
@@ -305,22 +305,22 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
           $in_video = "('".implode("' , '" , $video_extensions)."')";
           $in_txt = "('".implode("' , '" , $txt_extensions)."')";
 
-          $count_img = countFilesByID('artist',$in_img, $_GET[id]);
-          $count_audio = countFilesByID('artist',$in_audio, $_GET[id]);
-          $count_video = countFilesByID('artist',$in_video, $_GET[id]);
-          $count_txt = countFilesByID('artist',$in_txt, $_GET[id]);
+          $count_img = countFilesByID('artist',$in_img, $_GET['id']);
+          $count_audio = countFilesByID('artist',$in_audio, $_GET['id']);
+          $count_video = countFilesByID('artist',$in_video, $_GET['id']);
+          $count_txt = countFilesByID('artist',$in_txt, $_GET['id']);
 
-          $rows = selectFilesByID('artist', $_GET[id]);
+          $rows = selectFilesByID('artist', $_GET['id']);
 
 
 
           echo '<!-- Nav tabs -->
           <div class="card col-lg-6 col-md-">
           <ul class="nav nav-tabs" role="tablist">
-              <li role="presentation" class="active"><a href="#audio" aria-controls="audio" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span><span class="badge">'.$count_audio[qtd].'</span></a></li>
-              <li role="presentation"><a href="#video" aria-controls="video" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span><span class="badge">'.$count_video[qtd].'</span></a></li>
-              <li role="presentation"><a href="#imagem" aria-controls="imagem" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span><span class="badge">'.$count_img[qtd].'</span></a></li>
-              <li role="presentation"><a href="#texto" aria-controls="texto" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-text-size" aria-hidden="true"></span><span class="badge">'.$count_txt[qtd].'</span></a></li>
+              <li role="presentation" class="active"><a href="#audio" aria-controls="audio" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span><span class="badge">'.$count_audio['qtd'].'</span></a></li>
+              <li role="presentation"><a href="#video" aria-controls="video" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span><span class="badge">'.$count_video['qtd'].'</span></a></li>
+              <li role="presentation"><a href="#imagem" aria-controls="imagem" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span><span class="badge">'.$count_img['qtd'].'</span></a></li>
+              <li role="presentation"><a href="#texto" aria-controls="texto" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-text-size" aria-hidden="true"></span><span class="badge">'.$count_txt['qtd'].'</span></a></li>
           </ul>
 
           <!-- Tab panes -->
@@ -352,8 +352,8 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
 					echo '<h1 class="col-10">'.$row['nome'].' <small>';
           foreach ($componentes as $id => $nome) echo '<a class="deco-none" href="artistprofile.php?id='.$id.'">'.$nome.'</a> | ';
 
-					echo '</small><h5>'.$row['nacionalidade'].', começou em '. date('Y', strtotime($row[data_nasc])).' @ '.$row['local_nasc'];
-          if (isset($row['data_morte'])) echo ' terminou em '.date('Y', strtotime($row[data_morte])).'</h5>
+					echo '</small><h5>'.$row['nacionalidade'].', começou em '. date('Y', strtotime($row['data_nasc'])).' @ '.$row['local_nasc'];
+          if (isset($row['data_morte'])) echo ' terminou em '.date('Y', strtotime($row['data_morte'])).'</h5>
           <p>'.$row['webpage'].'</p>';
           if (isset($row['bio'])) echo '<blockquote><p class="lead">'.$row['bio'].'</p></blockquote>';
 
@@ -404,7 +404,7 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
                 echo '<div class="col-lg-6 col-md-6">
                 <h3>Albums</h3>';
 
-                foreach ($rows as $row) echo '<a style="text-decoration:none;" href="album.php?id='.$row[id_album].'"><h5>'.$row[nome_album].'</h5></a>';
+                foreach ($rows as $row) echo '<a style="text-decoration:none;" href="album.php?id='.$row['id_album'].'"><h5>'.$row['nome_album'].'</h5></a>';
 
                 echo "</div></div>";
 
@@ -428,12 +428,12 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
                 $in_video = "('".implode("' , '" , $video_extensions)."')";
                 $in_txt = "('".implode("' , '" , $txt_extensions)."')";
 
-                $count_img = countFilesByID('artist',$in_img, $_GET[id]);
-                $count_audio = countFilesByID('artist',$in_audio, $_GET[id]);
-                $count_video = countFilesByID('artist',$in_video, $_GET[id]);
-                $count_txt = countFilesByID('artist',$in_txt, $_GET[id]);
+                $count_img = countFilesByID('artist',$in_img, $_GET['id']);
+                $count_audio = countFilesByID('artist',$in_audio, $_GET['id']);
+                $count_video = countFilesByID('artist',$in_video, $_GET['id']);
+                $count_txt = countFilesByID('artist',$in_txt, $_GET['id']);
 
-                $rows = selectFilesByID('artist', $_GET[id]);
+                $rows = selectFilesByID('artist', $_GET['id']);
 
                 echo '<!-- Nav tabs -->
                 <div class="card col-lg-6 col-md-">
@@ -450,7 +450,7 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
                     <div role="tabpanel" class="tab-pane" id="video">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
                     <div role="tabpanel" class="tab-pane" id="imagem">';
 
-                    foreach ($rows as $row) echo '<a style="text-decoration:none;" href="artist_files/'.$_GET[id].'/'.$row[file].'"><h5>'.$row[type].'</h5></a>';
+                    foreach ($rows as $row) echo '<a style="text-decoration:none;" href="artist_files/'.$_GET['id'].'/'.$row['file'].'"><h5>'.$row['type'].'</h5></a>';
 
                   echo '</div>
                     <div role="tabpanel" class="tab-pane" id="texto">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..</div>

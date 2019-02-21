@@ -214,7 +214,7 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
           $query2 = "SELECT count(aa.id_artista) as artistas, al.id_album, al.nome_album from artista as a
                      JOIN album_artista as aa ON a.id_artista = aa.id_artista
                      JOIN album as al ON aa.id_album = al.id_album
-				             WHERE al.id_album = " . $_GET[id] . "
+				             WHERE al.id_album = " . $_GET['id'] . "
                      GROUP BY al.id_album, al.id_artista
                      HAVING artistas > 1";
 
@@ -229,34 +229,34 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
           foreach ($row2 as $key => $value) $id_album[] = $value['id_album'];
 
           //Cria um array com id_album e os artistas relacionados
-          foreach ($id_album as $key => $id) $artists[$id] = selectArtistsByAlbumID($id);
+          foreach ($id_album as $key => $id) $artists['$id'] = selectArtistsByAlbumID($id);
 
-          if ($row2) foreach ($artists[$id] as $id => $nome) $artistlinks[] = sprintf('<a class="deco-none" href="artistprofile.php?id=%s">%s</a>', $id, $nome);
+          if ($row2) foreach ($artists['$id'] as $id => $nome) $artistlinks[] = sprintf('<a class="deco-none" href="artistprofile.php?id=%s">%s</a>', $id, $nome);
 
 					// TESTING
-					if (isset($row[cover])) {
+					if (isset($row['cover'])) {
             list($width, $height, $type, $attr) = getimagesize("album_files/$_GET[id]/$row[cover]");
-  					 echo "<img src='album_files/".$_GET[id]."/".$row[cover]."' width='300' height='300' alt='' class='img-fluid col-md-offset-4'/>";
+  					 echo "<img src='album_files/".$_GET['id']."/".$row['cover']."' width='300' height='300' alt='' class='img-fluid col-md-offset-4'/>";
 
           }
 
 
-					if($row2) echo '<h1 href="'.$row[webpage].'" class="col-12">'.$row[nome_album].' <small> de '.implode(' & ', $artistlinks).'</small></h1>
-          <h5>álbum com '.$row[num_faixas].' faixas lançado em '. $row[ano_lanc].'.</h5>'	;
-          else echo '<h1 href="'.$row[webpage].'" class="col-12">'.$row[nome_album].' <small> de <a class="deco-none" href="artistprofile.php?id='.$row[id_artista].'">'.$row[nome].'</a></small></h1>
-          <h5>álbum com '.$row[num_faixas].' faixas lançado em '. $row[ano_lanc].'.</h5>'	;
+					if($row2) echo '<h1 href="'.$row['webpage'].'" class="col-12">'.$row['nome_album'].' <small> de '.implode(' & ', $artistlinks).'</small></h1>
+          <h5>álbum com '.$row['num_faixas'].' faixas lançado em '. $row['ano_lanc'].'.</h5>'	;
+          else echo '<h1 href="'.$row['webpage'].'" class="col-12">'.$row['nome_album'].' <small> de <a class="deco-none" href="artistprofile.php?id='.$row['id_artista'].'">'.$row['nome'].'</a></small></h1>
+          <h5>álbum com '.$row['num_faixas'].' faixas lançado em '. $row['ano_lanc'].'.</h5>'	;
 
-					$rows = selectMusicListByAlbumID($_GET[id]);
+					$rows = selectMusicListByAlbumID($_GET['id']);
 					//echo "</div>"; //first row
 
           echo '<div class="row">
 					<div class="col-lg-6 col-md-6">';
 
           foreach ($rows as $row) {
-            echo '<h5>#'.$row[num_faixa].' <a style="text-decoration:none;" href="music.php?id='.$row[id_musica].'">'.$row[nome_musica].'</h5></a>';
+            echo '<h5>#'.$row['num_faixa'].' <a style="text-decoration:none;" href="music.php?id='.$row['id_musica'].'">'.$row['nome_musica'].'</h5></a>';
           }
 
-					$generos = selectGenresByAlbumID($_GET[id]);
+					$generos = selectGenresByAlbumID($_GET['id']);
 
           if ($generos){
 						echo '<div class="row">
@@ -275,20 +275,20 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
           $in_video = "('".implode("' , '" , $video_extensions)."')";
           $in_txt = "('".implode("' , '" , $txt_extensions)."')";
 
-          $count_img = countFilesByID('album',$in_img, $_GET[id]);
-          $count_audio = countFilesByID('album',$in_audio, $_GET[id]);
-          $count_video = countFilesByID('album',$in_video, $_GET[id]);
-          $count_txt = countFilesByID('album',$in_txt, $_GET[id]);
+          $count_img = countFilesByID('album',$in_img, $_GET['id']);
+          $count_audio = countFilesByID('album',$in_audio, $_GET['id']);
+          $count_video = countFilesByID('album',$in_video, $_GET['id']);
+          $count_txt = countFilesByID('album',$in_txt, $_GET['id']);
 
-          $rows = selectFilesByID('album', $_GET[id]);
+          $rows = selectFilesByID('album', $_GET['id']);
 
           echo '<!-- Nav tabs -->
           <div class="card">
           <ul class="nav nav-tabs" role="tablist">
-              <li role="presentation" class="active"><a href="#audio" aria-controls="audio" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span><span class="badge">'.$count_audio[qtd].'</span></a></li>
-              <li role="presentation"><a href="#video" aria-controls="video" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span><span class="badge">'.$count_video[qtd].'</span></a></li>
-              <li role="presentation"><a href="#imagem" aria-controls="imagem" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span><span class="badge">'.$count_img[qtd].'</span></a></li>
-              <li role="presentation"><a href="#texto" aria-controls="texto" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-text-size" aria-hidden="true"></span><span class="badge">'.$count_txt[qtd].'</span></a></li>
+              <li role="presentation" class="active"><a href="#audio" aria-controls="audio" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span><span class="badge">'.$count_audio['qtd'].'</span></a></li>
+              <li role="presentation"><a href="#video" aria-controls="video" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span><span class="badge">'.$count_video['qtd'].'</span></a></li>
+              <li role="presentation"><a href="#imagem" aria-controls="imagem" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span><span class="badge">'.$count_img['qtd'].'</span></a></li>
+              <li role="presentation"><a href="#texto" aria-controls="texto" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-text-size" aria-hidden="true"></span><span class="badge">'.$count_txt['qtd'].'</span></a></li>
           </ul>
 
           <!-- Tab panes -->
@@ -297,7 +297,7 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
               <div role="tabpanel" class="tab-pane" id="video">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
               <div role="tabpanel" class="tab-pane" id="imagem">';
 
-              foreach ($rows as $row) echo '<a style="text-decoration:none;" href="album_files/'.$row[id_album].'/'.$row[file].'"><h5>'.$row[type].'</h5></a>';
+              foreach ($rows as $row) echo '<a style="text-decoration:none;" href="album_files/'.$row['id_album'].'/'.$row['file'].'"><h5>'.$row['type'].'</h5></a>';
 
             echo '</div>
               <div role="tabpanel" class="tab-pane" id="texto">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..</div>

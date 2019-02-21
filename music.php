@@ -214,9 +214,9 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
 				}
 
 
-					echo '<h1 href="'.$row[webpage].'" class="col-12">'.$row[nome_musica].' <small> de <a class="deco-none" href="artistprofile.php?id='.$row['id_artista'].'">'.$row['nome'].'</a></small></h1>
-          <h5>lançada em '. $row[ano_lanc].', faixa '.$row[num_faixa].' do álbum <a style="
-						text-decoration:none;" href="album.php?id='.$row[id_album].'">'.$row[nome_album].'</a></h5>'	;
+					echo '<h1 href="'.$row['webpage'].'" class="col-12">'.$row['nome_musica'].' <small> de <a class="deco-none" href="artistprofile.php?id='.$row['id_artista'].'">'.$row['nome'].'</a></small></h1>
+          <h5>lançada em '. $row['ano_lanc'].', faixa '.$row['num_faixa'].' do álbum <a style="
+						text-decoration:none;" href="album.php?id='.$row['id_album'].'">'.$row['nome_album'].'</a></h5>'	;
 
 
           $generos = selectGenreByMusicID($_GET['id']);
@@ -238,7 +238,7 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
           <div class="col-lg-6 col-md-6">
           <h3>Compositores</h3>';
           foreach ($rows as $row) {
-            echo '<a style="text-decoration:none;" href="artistprofile.php?id='.$row[id_artista].'"><h5>'.$row[nome].'</h5></a>';
+            echo '<a style="text-decoration:none;" href="artistprofile.php?id='.$row['id_artista'].'"><h5>'.$row['nome'].'</h5></a>';
           }
           echo '</div>';
 
@@ -248,7 +248,7 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
           <h3>Músicas relacionadas</h3>';
 
           foreach ($rows as $row) {
-            echo '<a style="text-decoration:none;" href="music.php?id='.$row[id_musica].'"><h5>'.$row[nome_musica].'</h5></a>';
+            echo '<a style="text-decoration:none;" href="music.php?id='.$row['id_musica'].'"><h5>'.$row['nome_musica'].'</h5></a>';
           }
           echo '</div> </div>';
 
@@ -273,20 +273,20 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
           $in_video = "('".implode("' , '" , $video_extensions)."')";
           $in_txt = "('".implode("' , '" , $txt_extensions)."')";
 
-          $count_img = countFilesByID('music',$in_img, $_GET[id]);
-          $count_audio = countFilesByID('music',$in_audio, $_GET[id]);
-          $count_video = countFilesByID('music',$in_video, $_GET[id]);
-          $count_txt = countFilesByID('music',$in_txt, $_GET[id]);
+          $count_img = countFilesByID('music',$in_img, $_GET['id']);
+          $count_audio = countFilesByID('music',$in_audio, $_GET['id']);
+          $count_video = countFilesByID('music',$in_video, $_GET['id']);
+          $count_txt = countFilesByID('music',$in_txt, $_GET['id']);
 
-          $rows = selectFilesByID('music', $_GET[id]);
+          $rows = selectFilesByID('music', $_GET['id']);
 
           echo '<!-- Nav tabs -->
           <div class="card">
           <ul class="nav nav-tabs" role="tablist">
-              <li role="presentation" class="active"><a href="#audio" aria-controls="audio" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span><span class="badge">'.$count_audio[qtd].'</span></a></li>
-              <li role="presentation"><a href="#video" aria-controls="video" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span><span class="badge">'.$count_video[qtd].'</span></a></li>
-              <li role="presentation"><a href="#imagem" aria-controls="imagem" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span><span class="badge">'.$count_img[qtd].'</span></a></li>
-              <li role="presentation"><a href="#texto" aria-controls="texto" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-text-size" aria-hidden="true"></span><span class="badge">'.$count_txt[qtd].'</span></a></li>
+              <li role="presentation" class="active"><a href="#audio" aria-controls="audio" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span><span class="badge">'.$count_audio['qtd'].'</span></a></li>
+              <li role="presentation"><a href="#video" aria-controls="video" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span><span class="badge">'.$count_video['qtd'].'</span></a></li>
+              <li role="presentation"><a href="#imagem" aria-controls="imagem" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span><span class="badge">'.$count_img['qtd'].'</span></a></li>
+              <li role="presentation"><a href="#texto" aria-controls="texto" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-text-size" aria-hidden="true"></span><span class="badge">'.$count_txt['qtd'].'</span></a></li>
           </ul>
 
           <!-- Tab panes -->
@@ -295,7 +295,7 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
               <div role="tabpanel" class="tab-pane" id="video">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
               <div role="tabpanel" class="tab-pane" id="imagem">';
 
-              foreach ($rows as $row) echo '<a style="text-decoration:none;" href="album_files/'.$row[id_musica].'/'.$row[file].'"><h5>'.$row[type].'</h5></a>';
+              foreach ($rows as $row) echo '<a style="text-decoration:none;" href="album_files/'.$row['id_musica'].'/'.$row['file'].'"><h5>'.$row['type'].'</h5></a>';
 
             echo '</div>
               <div role="tabpanel" class="tab-pane" id="texto">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..</div>
