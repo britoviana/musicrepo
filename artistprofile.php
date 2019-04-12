@@ -385,7 +385,7 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
                 echo '<div class="row">
                 <div class="col-lg-6 col-md-6">
                 <h3>Músicas</h3>';
-                foreach ($rows as $row) echo '<a style="text-decoration:none;" href="music.php?id='.$row[id_musica].'"><h5>'.$row[nome_musica].'</h5></a>';
+                foreach ($rows as $row) echo '<a style="text-decoration:none;" href="music.php?id='.$row["id_musica"].'"><h5>'.$row["nome_musica"].'</h5></a>';
 
                 echo '</div>';
 
@@ -438,10 +438,10 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
                 echo '<!-- Nav tabs -->
                 <div class="card col-lg-6 col-md-">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#audio" aria-controls="audio" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span><span class="badge">'.$count_audio[qtd].'</span></a></li>
-                    <li role="presentation"><a href="#video" aria-controls="video" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span><span class="badge">'.$count_video[qtd].'</span></a></li>
-                    <li role="presentation"><a href="#imagem" aria-controls="imagem" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span><span class="badge">'.$count_img[qtd].'</span></a></li>
-                    <li role="presentation"><a href="#texto" aria-controls="texto" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-text-size" aria-hidden="true"></span><span class="badge">'.$count_txt[qtd].'</span></a></li>
+                    <li role="presentation" class="active"><a href="#audio" aria-controls="audio" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span><span class="badge">'.$count_audio["qtd"].'</span></a></li>
+                    <li role="presentation"><a href="#video" aria-controls="video" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span><span class="badge">'.$count_video["qtd"].'</span></a></li>
+                    <li role="presentation"><a href="#imagem" aria-controls="imagem" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span><span class="badge">'.$count_img["qtd"].'</span></a></li>
+                    <li role="presentation"><a href="#texto" aria-controls="texto" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-text-size" aria-hidden="true"></span><span class="badge">'.$count_txt["qtd"].'</span></a></li>
                 </ul>
 
                 <!-- Tab panes -->
