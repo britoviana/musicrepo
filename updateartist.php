@@ -164,7 +164,7 @@
 							if ($avatar_exists == 1){
 								$avatar_old = $result['avatar'];
 								$id_old = $result['id'];
-								$remove_dir = uploadDir('artist_files/', $_GET[id]);
+								$remove_dir = uploadDir('artist_files/', $_GET["id"]);
 							}
 
 							// Add new avatar FILE
@@ -174,7 +174,7 @@
 							$fileSize = $_FILES['avatar']['size'];
 
 							// upload directory
-							$upload_dir = uploadDir('artist_files/', $_GET[id]);
+							$upload_dir = uploadDir('artist_files/', $_GET["id"]);
 
 							// get file extension
 							$fileExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION));
@@ -366,7 +366,7 @@
 							if ($avatar_exists == 1){
 								$avatar_old = $result['avatar'];
 								$id_old = $result['id'];
-								$remove_dir = uploadDir('artist_files/', $_GET[id]);
+								$remove_dir = uploadDir('artist_files/', $_GET["id"]);
 							}
 
 							// Add new avatar FILE
@@ -376,7 +376,7 @@
 							$fileSize = $_FILES['avatar']['size'];
 
 							// upload directory
-							$upload_dir = uploadDir('artist_files/', $_GET[id]);
+							$upload_dir = uploadDir('artist_files/', $_GET["id"]);
 
 							// get file extension
 							$fileExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION));

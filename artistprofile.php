@@ -233,10 +233,10 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
             echo "<img src='artist_files/".$_GET['id']."/".$row['avatar']."' width='300' height='300' alt='getimagesize() example' class='img-circle col-md-offset-4'/>";
           }
 
-					echo '<h1 href="'.$row['webpage'].'" class="col-12">'.$row['nome'].' <small>'.$row['nome_completo'].'</small></h1>
+					echo '<h1 href="'.$row['webpage'].'" target="_blank" class="col-12">'.$row['nome'].' <small>'.$row['nome_completo'].'</small></h1>
           <h5>'.$row['nacionalidade'].', nasceu no dia '. date('d/m/Y', strtotime($row['data_nasc'])) .' @ '. $row['local_nasc'];
           if (isset($row['data_morte'])) echo ' morreu no dia '. date('d/m/Y', strtotime($row['data_morte'])).' @ '.$row['local_morte'].'</h5>';
-          echo '<a style="text-decoration:none;" href="'.$row['webpage'].'"<p>'.$row['webpage'].'</p></a>';
+          echo '<a style="text-decoration:none;" href="'.$row['webpage'].'" target="_blank"<p>'.$row['webpage'].'</p></a>';
           if (isset($row['bio'])) echo '<blockquote ><p class="lead">'.$row['bio'].'</p></blockquote>';
 
 
