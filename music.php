@@ -42,7 +42,7 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
 
  else {
    // upload directory
-   $upload_dir = uploadDir('music_files/');
+   $upload_dir = uploadDir('music_files/', $id);
 
    // get file extension
    $fileExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION));
@@ -295,7 +295,7 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
               <div role="tabpanel" class="tab-pane" id="video"></div>
               <div role="tabpanel" class="tab-pane" id="imagem">';
 
-              foreach ($rows as $row) echo '<a style="text-decoration:none;" href="album_files/'.$row['id_musica'].'/'.$row['file'].'"><h5>'.$row['type'].'</h5></a>';
+              foreach ($rows as $row) echo '<a style="text-decoration:none;" href="music_files/'.$row['id_musica'].'/'.$row['file'].'"><h5>'.$row['type'].'</h5></a>';
 
             echo '</div>
               <div role="tabpanel" class="tab-pane" id="texto"></div>

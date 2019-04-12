@@ -782,7 +782,7 @@ function countFilesByID($type, $in_params, $id){
 function uploadDir($upload_dir, $id){
 	// upload directory
 	if (!empty($id)) $upload_dir = $upload_dir.$id.'/';
- 	else if (!empty($_GET[id])) $upload_dir = $upload_dir.$_GET[id].'/';
+ 	else if (!empty($_GET["id"])) $upload_dir = $upload_dir.$_GET["id"].'/';
 	else $upload_dir = $upload_dir.'avatar/';
 
 	chmod($upload_dir, 0777);

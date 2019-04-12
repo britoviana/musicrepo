@@ -42,7 +42,7 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
 
  else {
    // upload directory
-   $upload_dir = uploadDir('artist_files/');
+   $upload_dir = uploadDir('artist_files/', $id);
 
 
    // get file extension
