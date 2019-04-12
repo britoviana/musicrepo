@@ -191,7 +191,7 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
 
 		<div class="container">
 			<div class="row" style="margin-top: 20px;">
-			<div class="col-md-12" >
+			<div class="col-lg 12 col-md-12 col-12" >
 				<?php
 
 					require_once('connection.php');
@@ -236,14 +236,14 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
 					// TESTING
 					if (isset($row['cover'])) {
             list($width, $height, $type, $attr) = getimagesize("album_files/$_GET[id]/$row[cover]");
-  					 echo "<img src='album_files/".$_GET['id']."/".$row['cover']."' width='300' height='300' alt='' class='img-fluid col-md-offset-4'/>";
+  					 echo "<img src='album_files/".$_GET['id']."/".$row['cover']."' width='300' height='300' alt='' class='img-fluid col-lg-offset-4 col-md-offset-4 col-sm-offset-4'/>";
 
           }
 
 
 					if($row2) echo '<h1 href="'.$row['webpage'].'" class="col-12">'.$row['nome_album'].' <small> de '.implode(' & ', $artistlinks).'</small></h1>
           <h5>álbum com '.$row['num_faixas'].' faixas lançado em '. $row['ano_lanc'].'.</h5>'	;
-          else echo '<h1 href="'.$row['webpage'].'" class="col-12">'.$row['nome_album'].' <small> de <a class="deco-none" href="artistprofile.php?id='.$row['id_artista'].'">'.$row['nome'].'</a></small></h1>
+          else echo '<h1 href="'.$row['webpage'].'" class="col-12">'.$row['nome_album'].' <small> <a class="deco-none" href="artistprofile.php?id='.$row['id_artista'].'">'.$row['nome'].'</a></small></h1>
           <h5>álbum com '.$row['num_faixas'].' faixas lançado em '. $row['ano_lanc'].'.</h5>'	;
 
 					$rows = selectMusicListByAlbumID($_GET['id']);
@@ -294,13 +294,13 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
           <!-- Tab panes -->
           <div class="tab-content">
               <div role="tabpanel" class="tab-pane active" id="audio"></div>
-              <div role="tabpanel" class="tab-pane" id="video">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+              <div role="tabpanel" class="tab-pane" id="video"></div>
               <div role="tabpanel" class="tab-pane" id="imagem">';
 
               foreach ($rows as $row) echo '<a style="text-decoration:none;" href="album_files/'.$row['id_album'].'/'.$row['file'].'"><h5>'.$row['type'].'</h5></a>';
 
             echo '</div>
-              <div role="tabpanel" class="tab-pane" id="texto">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..</div>
+              <div role="tabpanel" class="tab-pane" id="texto"></div>
           </div>
           </div>';
 

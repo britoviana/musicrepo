@@ -507,7 +507,8 @@
 			<div class="form-group">
 				<div class="col-12">
 					<button type="submit" name="updatealbum" class="btn btn-success btn-block">Atualizar</button></br>
-					<button type="button" class="btn btn-danger col-xs-2" data-toggle="modal" data-target="#confirmDelete">Excluir</button>
+					<button onclick="goBack()" name="voltar" class="btn btn-info btn-block">Voltar</button>
+					<button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#confirmDelete">Excluir</button>
 				</div>
 			</div>
 

@@ -33,10 +33,11 @@
 
 
   <div class="container">
-  <div class="row"> 
+  <div class="row">
   <div class="col-lg-12 col-md-12" >
 
     <h1>Comece aqui</h1>
+    <hr>
 
     <form method="get" accept-charset="uft8">
 
@@ -52,7 +53,7 @@
                    </ul>
                </div>
                <input type="hidden" name="search_param" id="search_param">
-               <input type="text" class="form-control" name="busca" id="busca" placeholder="Buscar artista, música, álbum...">
+               <input type="text" class="form-control" name="busca" id="busca" placeholder="artista, música ou álbum...">
                <span class="input-group-btn">
                    <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
                </span>

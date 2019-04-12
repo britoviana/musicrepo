@@ -47,7 +47,7 @@
 
 			} else {
 
-				echo '<div class="col-lg-5 col-md-5">';
+				echo '<div class="col-lg-offset-2 col-md-offset-2 col-lg-8 col-md-8">';
 
 				if (isset($_POST['submit'])){
 
@@ -333,8 +333,8 @@
 
 		<form action="addartistsolo.php" method="post" accept-charset="uft8" enctype="multipart/form-data">
 
-		<h1 class="col-10">Adicionar artista solo</h1>
-
+		<h1 class="col-10">Adicionar artista</h1>
+		<hr>
 		<div class="form-group">
 			<label for="nome" class="col-12 col-form-label">Nome</label>
 			<div class="col-12">

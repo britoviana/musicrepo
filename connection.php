@@ -782,14 +782,12 @@ function countFilesByID($type, $in_params, $id){
 function uploadDir($upload_dir, $id){
 	// upload directory
 	if (!empty($id)) $upload_dir = $upload_dir.$id.'/';
-	else if (!empty($_GET[id])) $upload_dir = $upload_dir.$_GET[id].'/';
+ 	else if (!empty($_GET[id])) $upload_dir = $upload_dir.$_GET[id].'/';
 	else $upload_dir = $upload_dir.'avatar/';
 
 	chmod($upload_dir, 0777);
 
 	if (!is_dir($upload_dir)) mkdir($upload_dir, 0777, true);
-
-	var_dump($upload_dir);
 
 	return $upload_dir;
 
@@ -843,7 +841,7 @@ function fileUpload($type, $dbh, $userfile, $fileExt, $fileSize, $category){
 			 <div class="modal-content">
 				 <div class="modal-header">
 					 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					 <h4 class="modal-title" id="myModalLabel">Upload files</h4>
+					 <h4 class="modal-title" id="myModalLabel">Adicionar arquivo</h4>
 				 </div>
 				 <div class="modal-body">
 					 <div class="container">
@@ -901,19 +899,19 @@ function navBar(){
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Artistas<span class="caret"></span></a>
 								<ul class="dropdown-menu">
-								<li><a href="searchartist.php">Buscar artista</a></li>
+								<li><a href="searchartist.php">buscar artista</a></li>
 								<li role="separator" class="divider"></li>
-									<li><a href="addartistsolo.php">Adicionar artista solo</a></li>
-									<li><a href="addartist.php">Adicionar banda/grupo</a></li>
+									<li><a href="addartistsolo.php">adicionar artista solo</a></li>
+									<li><a href="addartist.php">adicionar banda/grupo</a></li>
 								</ul>
 							</li>
 							<li class="dropdown"><a href="searchmusic.php">Música <span class="sr-only">(current)</span></a></li>
 							<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Album<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-							<li><a href="searchalbum.php">Buscar album</a></li>
+							<li><a href="searchalbum.php">buscar álbum</a></li>
 							<li role="separator" class="divider"></li>
-							<li><a href="addalbum.php">Adicionar album</a></li>
+							<li><a href="addalbum.php">adicionar álbum</a></li>
 							</ul>
 							</li>';
 							if (isset($_SESSION['usuario'])) echo '<li class="dropdown"><a href="addgenre.php">Gêneros <span class="sr-only">(current)</span></a></li>';

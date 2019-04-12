@@ -38,11 +38,11 @@
   <div class="container">
   <h1>Músicas</h1>
   <div class="row">
-  <div class="col-lg-7 col-md-7">
+  <div class="col-lg-12 col-md-12">
     <hr>
     <form action="searchmusic.php?busca&genero&ano_lanc&compositor" method="get" accept-charset="utf8" role="search">
       <div class="input-group input-group-lg">
-          <input type="text" class="form-control" placeholder="Buscar por nome da música ou artista" name="busca">
+          <input type="text" class="form-control" placeholder="Nome da música ou artista" name="busca">
           <div class="input-group-btn">
               <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
           </div>
@@ -53,11 +53,11 @@
       <div class="row">
         <div class="col-lg-12 col-md-12">
       <div class="form-group">
-        <select name="andor_genero" class="form-control selectpicker" data-style="btn-info" data-width="10%">
+        <select name="andor_genero" class="form-control selectpicker" data-style="btn-info" data-width="17%">
           <option value="OR">OU</option>
           <option value="AND">E</option>
         </select>
-        <select id="genero" name="genero[]" class="form-control selectpicker" data-live-search="true" data-width="89%" data-none-selected-text="Selecionar gênero" multiple>';
+        <select id="genero" name="genero[]" class="form-control selectpicker" data-live-search="true" data-width="81%" data-none-selected-text="Selecionar gênero" multiple>';
 
             <?php showGenres('all'); ?>
 
@@ -68,11 +68,11 @@
       <div class="row">
         <div class="col-lg-12 col-md-12">
       <div class="form-group">
-        <select name="andor_ano_lanc"class="form-control selectpicker" data-style="btn-info" data-width="10%">
+        <select name="andor_ano_lanc"class="form-control selectpicker" data-style="btn-info" data-width="17%">
           <option value="OR">OU</option>
           <option value="AND">E</option>
         </select>
-        <select id="ano_lanc" name="ano_lanc[]" class="form-control selectpicker" data-live-search="true" data-width="89%" data-none-selected-text="Selecionar ano de lançamento" multiple>';
+        <select id="ano_lanc" name="ano_lanc[]" class="form-control selectpicker" data-live-search="true" data-width="81%" data-none-selected-text="Selecionar ano de lançamento" multiple>';
 
             <?php showReleasedYear(); ?>
 
@@ -84,11 +84,11 @@
     <div class="row">
       <div class="col-lg-12 col-md-12">
       <div class="form-group">
-        <select name="andor_compositor" class="form-control selectpicker" data-style="btn-info" data-width="10%">
+        <select name="andor_compositor" class="form-control selectpicker" data-style="btn-info" data-width="17%">
           <option value="OR">OU</option>
           <option value="AND">E</option>
         </select>
-        <select id="compositor" name="compositor[]" class="form-control selectpicker" data-actions-box="true" data-live-search="true" data-width="89%" data-none-selected-text="Selecionar compositor" multiple>';
+        <select id="compositor" name="compositor[]" class="form-control selectpicker" data-actions-box="true" data-live-search="true" data-width="81%" data-none-selected-text="Selecionar compositor" multiple>';
 
             <?php showComposers('all'); ?>
 

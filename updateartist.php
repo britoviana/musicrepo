@@ -69,7 +69,7 @@
 
 	} else {
 
-		echo '<div class="col-lg-5">';
+		echo '<div class="col-lg-7 col-lg-offset-2">';
 
 		if (isset($_POST['submit'])){
 
@@ -668,8 +668,9 @@
 					<div class="form-group">
 						<div class="col-12">
 							<button type="submit" name="submit" value="update_person" class="btn btn-success btn-block">Atualizar</button>
-							<a class="btn btn-info col-md-3" style="margin-top: 5px;" href="searchartist.php" role="button">Voltar</a>
-							<button type="button" style="margin-top: 5px;margin-left: 228px;" class="btn btn-danger col-md-3" data-toggle="modal" data-target="#confirmDelete">Excluir</button>
+							<br>
+							<a class="btn btn-info btn-block" style="margin-top: 5px;" href="searchartist.php" role="button">Voltar</a>
+							<button type="button" style="margin-top: 5px;" class="btn btn-danger btn-block" data-toggle="modal" data-target="#confirmDelete">Excluir</button>
 
 
 						</div>
@@ -773,8 +774,9 @@
 					<div class="form-group">
 						<div class="col-12">
 						<button type="submit" name="submit" value="update_band" class="btn btn-success btn-block">Atualizar</button>
-						<a class="btn btn-info col-md-3" style="margin-top: 5px;" href="searchartist.php" role="button">Voltar</a>
-						<button type="button" style="margin-top: 5px;margin-left: 226px;" class="btn btn-danger col-md-3" data-toggle="modal" data-target="#confirmDelete">Excluir</button>
+						<br>
+						<a class="btn btn-info btn-block" style="margin-top: 5px;" href="searchartist.php" role="button">Voltar</a>
+						<button type="button" style="margin-top: 5px;margin-left:" class="btn btn-danger btn-block" data-toggle="modal" data-target="#confirmDelete">Excluir</button>
 
 						</div>
 					</div>

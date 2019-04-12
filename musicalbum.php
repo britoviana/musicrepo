@@ -67,20 +67,19 @@
 
 	} else {
 
-        echo '<div class="col-lg-12 col-md-12">
+        echo '<div class="col-lg-12">
               <h3>Adicionar faixa ao álbum</h3>
               <form class="form-inline" action="musicalbum.php?id='.$_GET['id'].'" method="post">';
-
         ?>
 
            <div class="form-group">
              <label class="sr-only" for="exampleInputEmail3">Faixa</label>
-             <input type="text" class="form-control bfh-number" data-buttons="false" name="num_faixa" id="num_faixa" data-min="1" data-max="99" value="<?php echo selectNextTrackNumByAlbumID($_GET['id']);?>">
+             <input type="text" class="form-control" data-buttons="false" name="num_faixa" id="num_faixa" data-min="1" data-max="99" value="<?php echo selectNextTrackNumByAlbumID($_GET['id']);?>">
            </div>
 
            <div class="form-group">
              <label class="sr-only" for="exampleInputPassword3">Nome</label>
-             <input type="text" class="form-control" name="nome" id="nome" size="30" placeholder="Nome">
+             <input type="text" class="form-control" name="nome" id="nome" size="30" placeholder="Nome da faixa">
            </div>
 
            <div class="form-group">
@@ -96,7 +95,7 @@
          <div class="form-group">
            <select name="compositor[]" id="compositor" class="form-control selectpicker"  data-width="auto" data-live-search="true" data-none-selected-text="Compositor" multiple>
              <?php
-               showArtists('all');
+              showArtists('all');
              ?>
            </select>
          </div>
@@ -105,7 +104,7 @@
          <select name="genero[]" id="genero" class="form-control selectpicker" data-width="auto" data-live-search="true" data-none-selected-text="Gênero" multiple>
            <?php
             $generos = selectGenresIdByAlbumID($_GET['id']);
-             showGenres($generos);
+            showGenres($generos);
            ?>
          </select>
        </div>
@@ -120,11 +119,10 @@
  </div>
 
 
+  <div class="container">
 
-  <div class="container" style="margin-top: 10px;">
-
-  <div class="row" style="margin-top: 100px;">
-  <div class="col-lg-11 col-md-11" >
+  <div class="row">
+  <div class="col-lg-12 col-md-12" >
 
   <?php
   // Get a connection for the database
@@ -472,20 +470,21 @@ if (isset($_POST['deletetrack'])){
   // until no further data is available
   $row = $sth->fetchAll(PDO::FETCH_ASSOC);
 
-  echo '<table id="listamusica" class="table table-hover table-stripped table-responsive">
+  echo '<table id="listamusica" class="table table-hover table-responsive">
 
   <h2><a style="text-decoration:none;" href="editalbum.php?id='.$id_album.'">'.$row[0]['album'].'</a></h2>
   <thead>
   <th>#</th>
-  <th>Faixa</th>
+  <th>Nome da faixa</th>
   <th>Álbum</th>
+  <th></th>
   </thead>';
 
   echo '<tbody>';
   foreach($row as $rows){
     echo '<tr><td>' .
-    $rows['faixa'] . '</td><td class="col-md-8">' .
-    $rows['musica'] . '</td><td class="col-md-12">'.
+    $rows['faixa'] . '</td><td class="col-lg-9 col-md-9">' .
+    $rows['musica'] . '</td><td class="col-lg-11 col-md-11">'.
     $rows['album'] . '</td>'.
     '<td><a href="updatemusic.php?id='. $rows['id'] .'&album='.$rows['id_album'].'"><span class="glyphicon glyphicon-pencil" aria-hidden="true" style="color:#f0ad4e"></span></a></td>';
     //'<button type="button" name="deletetrack" class="btn btn-xs btn-danger" data-toggle="modal" data-target=".confirma-exclusao">Delete</button></td>';
@@ -500,6 +499,8 @@ if (isset($_POST['deletetrack'])){
 }
 }
   ?>
+
+</div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

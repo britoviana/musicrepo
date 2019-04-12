@@ -39,13 +39,13 @@
 
   <div class="container">
 
-  <h1>Artistas</h1>
   <div class="row">
-  <div class="col-lg-7 col-md-7">
+  <div class="col-lg-12 col-md-12">
+    <h1>Artistas</h1>
     <hr>
       <form action="searchartist.php?id=busca" method="get" accept-charset="utf8" role="search">
         <div class="input-group input-group-lg">
-            <input type="text" class="form-control" placeholder="Buscar artista pelo nome" name="busca">
+            <input type="text" class="form-control" placeholder="Nome do artista" name="busca">
             <div class="input-group-btn">
                 <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
             </div>
@@ -55,30 +55,30 @@
 
       <form action="searchartist.php?id=busca&ano_nasc&ano_morte" method="get" accept-charset="utf8" role="search">
           <div class="row">
-            <div class="col-lg-12 col-md-12">
-              <div class="form-group" aria-describedby="helpBlock">
-            <select name="andor_nasc" class="form-control selectpicker" data-style="btn-info" data-width="10%">
-              <option value="OR">OU</option>
-              <option value="AND">E</option>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="form-group">
+            <select name="andor_nasc" class="form-control selectpicker" data-style="btn-info" data-width="17%">
+              <option data-subtext="||" value="OR">OU</option>
+              <option data-subtext="&&" value="AND">E</option>
             </select>
-          <select id="ano_nasc" name="ano_nasc[]" class="form-control selectpicker" data-live-search="true" data-width="89%" data-none-selected-text="Buscar por ano de nascimento" multiple>';
-
+          <select id="ano_nasc" name="ano_nasc[]" class="form-control selectpicker" data-live-search="true" data-width="81%" data-none-selected-text="Buscar por ano de nascimento" multiple>';
               <?php showBirthYear("nasc"); ?>
-
           </select>
         </div>
+      </div>
+    </div>
         <div class="row">
-          <div class="col-lg-12 col-md-12">
+          <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="form-group" aria-describedby="helpBlock">
-          <select name="andor_morte" class="form-control selectpicker" data-style="btn-info" data-width="10%">
-            <option value="OR">OU</option>
-            <option value="AND">E</option>
+          <select name="andor_morte" class="form-control selectpicker" data-style="btn-info" data-width="17%">
+            <option data-subtext="||" value="OR">OU</option>
+            <option data-subtext="&&" value="AND">E</option>
           </select>
-          <select id="ano_morte" name="ano_morte[]" class="form-control selectpicker" data-live-search="true" data-width="89%" data-none-selected-text="Buscar por ano de morte" multiple>';
-
+          <select id="ano_morte" name="ano_morte[]" class="form-control selectpicker" data-live-search="true" data-width="81%" data-none-selected-text="Buscar por ano de morte" multiple>';
               <?php showBirthYear("morte"); ?>
-
           </select>
+        </div>
+        </div>
         </div>
         <span id="helpBlock" class="help-block">Faça as cominações que desejar.</span>
         <div class="input-group-btn">

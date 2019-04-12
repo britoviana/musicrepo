@@ -326,13 +326,13 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
           <!-- Tab panes -->
           <div class="tab-content">
               <div role="tabpanel" class="tab-pane active" id="audio"></div>
-              <div role="tabpanel" class="tab-pane" id="video">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+              <div role="tabpanel" class="tab-pane" id="video"></div>
               <div role="tabpanel" class="tab-pane" id="imagem">';
 
-              foreach ($rows as $row) echo '<a style="text-decoration:none;" href="artist_files/'.$_GET[id].'/'.$row[file].'"><h5>'.$row[type].'</h5></a>';
+              foreach ($rows as $row) echo '<a style="text-decoration:none;" href="artist_files/'.$_GET["id"].'/'.$row["file"].'"><h5>'.$row["type"].'</h5></a>';
 
             echo '</div>
-              <div role="tabpanel" class="tab-pane" id="texto">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..</div>
+              <div role="tabpanel" class="tab-pane" id="texto"></div>
           </div>
           </div>';
 

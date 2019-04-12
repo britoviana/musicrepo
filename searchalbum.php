@@ -36,13 +36,13 @@
     </header>
 
   <div class="container">
-  <h1>Albums</h1>
+  <h1>Álbums</h1>
   <div class="row">
-  <div class="col-md-7" >
+  <div class="col-lg 12 col-md-12" >
     <hr>
     <form action="searchalbum.php?id=busca" method="get" accept-charset="utf8" role="search">
       <div class="input-group input-group-lg">
-          <input type="text" class="form-control" placeholder="Buscar por nome do álbum ou do artista" name="busca">
+          <input type="text" class="form-control" placeholder="Nome do álbum ou do artista" name="busca">
           <div class="input-group-btn">
               <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
           </div>
@@ -53,11 +53,11 @@
         <div class="row">
           <div class="col-lg-12 col-md-12">
           <div class="form-group">
-            <select class="form-control selectpicker" data-style="btn-info" data-width="10%">
+            <select class="form-control selectpicker" data-style="btn-info" data-width="17%">
               <option value="or">OU</option>
               <option value="and">E</option>
             </select>
-          <select id="genero" name="genero[]" class="form-control selectpicker" data-width="89%" data-live-search="true" data-none-selected-text="Buscar por gêneros" multiple>';
+          <select id="genero" name="genero[]" class="form-control selectpicker" data-width="81%" data-live-search="true" data-none-selected-text="Buscar por gêneros" multiple>';
 
               <?php showGenres('all'); ?>
 
@@ -69,11 +69,11 @@
     <div class="row">
       <div class="col-lg-12 col-md-12">
       <div class="form-group">
-        <select class="form-control selectpicker" data-style="btn-info" data-width="10%">
+        <select class="form-control selectpicker" data-style="btn-info" data-width="17%">
           <option value="or">OU</option>
           <option value="and">E</option>
         </select>
-          <select id="ano_lanc" name="ano_lanc[]" class="form-control selectpicker" data-width="89%" data-live-search="true" data-none-selected-text="Buscar por ano de lançamento" multiple>';
+          <select id="ano_lanc" name="ano_lanc[]" class="form-control selectpicker" data-width="81%" data-live-search="true" data-none-selected-text="Buscar por ano de lançamento" multiple>';
 
               <?php showReleasedYear(); ?>
 

@@ -125,7 +125,7 @@
 
 		echo '<div class="container">
 			<div class="row">
-			<div class="col-md-6" >
+			<div class="col-md-7 col-md-offset-2" >
 
 		<h2>Editar música</h2>
 
@@ -208,8 +208,8 @@
 			</div>
       <div class="form-group">
 				<div class="col-10">
-      <button type="submit" name="deletetrack" class="btn btn-danger">Excluir</button>
-      <button onclick="goBack()" name="voltar" class="btn btn-primary">Voltar</button>
+        <button onclick="goBack()" name="voltar" class="btn btn-info btn-block">Voltar</button>
+        <button type="submit" name="deletetrack" class="btn btn-danger btn-block">Excluir</button>
       </div>
       </div>
 		</form>

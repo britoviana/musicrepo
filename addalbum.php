@@ -50,7 +50,7 @@
 
 				} else {
 
-					echo '<div class="col-lg-5 col-md-5">';
+					echo '<div class="col-lg-7 col-lg-offset-2">';
 
 
 
@@ -322,13 +322,10 @@
 					    }
 					}
 
-
-
 		 echo '<form action="addalbum.php" method="post" accept-charset="uft8" enctype="multipart/form-data">
 
 		<h1 class="col-10">Adicionar álbum</h1>
-
-
+		<hr>
 		<div class="form-group">
 			<label for="nome" class="col-12 col-form-label">Nome do álbum</label>
 			<div class="col-12">
@@ -368,7 +365,7 @@
 		<div class="form-group">
 		  <label for="ano" class="col-12 col-form-label">Ano de lançamento</label>
       <div class="col-12">
-        <input type="text" class="form-control bfh-number" name="ano" id="ano" data-min="1800" data-max="2017" value="2017">
+        <input type="text" class="form-control bfh-number" name="ano" id="ano" data-min="1800" data-max="2019" value="2019">
       </div>
 		</div>
 
