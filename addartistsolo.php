@@ -181,7 +181,7 @@
 								$fileSize = $_FILES['avatar']['size'];
 
 								// upload directory
-								$upload_dir = uploadDir('artist_files/', $_GET[id]);
+								$upload_dir = uploadDir('artist_files/', $_GET['id']);
 
 								// get file extension
 								$fileExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION));
@@ -293,14 +293,12 @@
 
 			        $affected_rows = $sth->rowCount();
 
-							var_dump($affected_rows);
-
 
 			        if($affected_rows == 1){
 
 			              echo '<br><div class="alert alert-success alert-dismissible" role="alert">
 			          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			          <strong>SUBMETERU!</strong> Artista adicionado.
+			          <strong>Sucesso!</strong> Artista adicionado.
 			        </div>';
 
 			              $sth = null;

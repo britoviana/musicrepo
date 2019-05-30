@@ -230,7 +230,7 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
 
 					if (isset($row['avatar'])) {
             list($width, $height, $type, $attr) = getimagesize('artist_files/'.$_GET['id'].'/'.$row['avatar']);
-            echo "<img src='artist_files/".$_GET['id']."/".$row['avatar']."' width='300' height='300' alt='getimagesize() example' class='img-circle col-md-offset-4'/>";
+            echo "<center><img src='artist_files/".$_GET['id']."/".$row['avatar']."' width='300' height='300' alt='avatar' class='img-circle'/></center>";
           }
 
 					echo '<h1 href="'.$row['webpage'].'" target="_blank" class="col-12">'.$row['nome'].' <small>'.$row['nome_completo'].'</small></h1>
@@ -345,7 +345,7 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
           $row = selectArtistByID($_GET['id']);
 
 					list($width, $height, $type, $attr) = getimagesize("artist_files/avatar/288554-cartolaavatar.jpg");
-					if (isset($row['avatar'])) echo "<img src='artist_files/".$_GET['id']."/".$row['avatar']."' width='300' height='300' alt='getimagesize() example' class='img-circle col-md-offset-4'/>";
+					if (isset($row['avatar'])) echo "<center><img src='artist_files/".$_GET['id']."/".$row['avatar']."' width='300' height='300' alt='avatar' class='img-responsive img-circle'/></center>";
 
 					$componentes = selectComponentsByArtistID($_GET['id']);
 

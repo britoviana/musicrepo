@@ -156,7 +156,7 @@
 									$fileSize = $_FILES['cover']['size'];
 
 									// upload directory
-									$upload_dir = uploadDir('album_files/',$_GET[id]);
+									$upload_dir = uploadDir('album_files/',$_GET['id']);
 
 									// get file extension
 									$fileExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION));
@@ -295,7 +295,7 @@
 
 					            echo '<br><form action="musicalbum.php?id=' . $id_album . '" method="post" accept-charset="utf8"><div class="col-12 alert alert-success alert-dismissible" role="alert">
 					        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					        <strong>SUBMETERU!</strong> Álbum '.$nome.' adicionado. <button type="submit" name="submit" class="btn btn-success btn-sm">Cadastrar músicas</button>
+					        <strong>Sucesso!</strong> Álbum '.$nome.' adicionado. <button type="submit" name="submit" class="btn btn-success btn-sm">Cadastrar músicas</button>
 					        		</div>';
 
 

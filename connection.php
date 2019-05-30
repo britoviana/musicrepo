@@ -10,7 +10,7 @@
 DEFINE('DB_USER', 'rodrigo');
 DEFINE('DB_PASSWORD', 'hqWxD3FN');
 DEFINE('DB_HOST', '127.0.0.1');
-DEFINE('DB_NAME', 'musicrepo');
+DEFINE('DB_NAME', 'musicrepo2');
 DEFINE('DB_CHARSET', 'utf8');
 
 // $link will contain a resource link to the database
@@ -675,6 +675,28 @@ function selectAlbumDetailsByAlbumID($id){
 
 	return $row;
 
+}
+
+function selectAlbumCovers($limit){
+
+	$dbh = openConnection();
+
+	$query =   "SELECT al.id_album, f.file as cover
+							FROM album AS al
+							LEFT JOIN album_artista AS aa ON al.id_album = aa.id_album
+							LEFT JOIN artista AS a ON aa.id_artista = a.id_artista
+							LEFT JOIN file AS f ON al.cover = f.id
+							WHERE al.cover
+							ORDER BY RAND()
+							LIMIT " . $limit;
+
+	$sth = $dbh->prepare($query);
+	$response = $sth->execute();
+	$rows = $sth->fetchAll(PDO::FETCH_ASSOC);
+	$dbh = null;
+	$sth = null;
+
+	return $rows;
 }
 
 function selectMusicListByAlbumID($id){

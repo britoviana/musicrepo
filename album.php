@@ -236,15 +236,15 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
 					// TESTING
 					if (isset($row['cover'])) {
             list($width, $height, $type, $attr) = getimagesize("album_files/$_GET[id]/$row[cover]");
-  					 echo "<img src='album_files/".$_GET['id']."/".$row['cover']."' width='300' height='300' alt='' class='img-fluid col-lg-offset-4 col-md-offset-4 col-sm-offset-4'/>";
+  					 echo "<center><img src='album_files/".$_GET['id']."/".$row['cover']."' width='300' height='300' alt='' class='img-fluid'/></center>";
 
           }
 
 
 					if($row2) echo '<h1 href="'.$row['webpage'].'" class="col-12">'.$row['nome_album'].' <small> de '.implode(' & ', $artistlinks).'</small></h1>
-          <h5>álbum com '.$row['num_faixas'].' faixas lançado em '. $row['ano_lanc'].'.</h5>'	;
+          <h5>álbum com '.$row['num_faixas'].' faixas lançado em '. $row['ano_lanc'].'</h5>'	;
           else echo '<h1 href="'.$row['webpage'].'" class="col-12">'.$row['nome_album'].' <small> <a class="deco-none" href="artistprofile.php?id='.$row['id_artista'].'">'.$row['nome'].'</a></small></h1>
-          <h5>álbum com '.$row['num_faixas'].' faixas lançado em '. $row['ano_lanc'].'.</h5>'	;
+          <h5>álbum com '.$row['num_faixas'].' faixas lançado em '. $row['ano_lanc'].'</h5>'	;
 
 					$rows = selectMusicListByAlbumID($_GET['id']);
 					//echo "</div>"; //first row

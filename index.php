@@ -7,12 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Search</title>
+    <title>MusicDatabase</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="css/bootstrap-select.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Staatliches&display=swap" rel="stylesheet">
+
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,11 +37,26 @@
 
 
   <div class="container">
-  <div class="row">
-  <div class="col-lg-12 col-md-12" >
 
-    <h1>Comece aqui</h1>
+    <?php
+    $covers = selectAlbumCovers(4);
+
+    echo '<center><div class="row">';
+    foreach ($covers as $cover) {
+      echo '<div class="col-6 col-sm-3"><a href="album.php?id='. $cover['id_album'] .'"><img src="album_files/'.$cover['id_album'].'/'.$cover['cover'].'" width="280" height="280" alt="Album cover" class="img-responsive"></a></div>';
+    }
+    echo '</div></center>';
+
+
+     ?>
+
+
+
+  <div class="col-lg-12 col-md-12">
+
     <hr>
+
+    <h1 style="font-family: 'Staatliches', cursive;">o que quer encontrar?</h1>
 
     <form method="get" accept-charset="uft8">
 
@@ -61,6 +80,8 @@
 
 </form>
 </div></div>
+
+</br></br>
 
 <?php
 
