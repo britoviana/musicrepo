@@ -56,7 +56,7 @@
 
     <hr>
 
-    <h1 style="font-family: 'Staatliches', cursive;">o que quer encontrar?</h1>
+    <h1 style="font-family: 'Staatliches', cursive;">o que deseja encontrar?</h1>
 
     <form method="get" accept-charset="uft8">
 

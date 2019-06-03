@@ -161,9 +161,13 @@
       }
 
       //For test purposes
-      $ano_lanc = '1976';
-      $versao = 'estudio';
       $id_album = $_POST['id_album'];
+
+      $row = selectAlbumDetailsByAlbumID($id_album);
+      $ano_lanc = $row['ano_lanc'];
+      $versao = 'estudio';
+
+
 
 
       if(empty($data_missing)){

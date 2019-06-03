@@ -20,7 +20,7 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
  if(isset($_POST['btnsave'])) {
 
 	 $filename = $_GET['id'];// file name
-   $filedesc = $_POST['file_desc'];// file description
+   $fileDesc = $_POST['file_desc'];// file description
 
    $imgFile = $_FILES['user_file']['name'];
    $tmp_file = $_FILES['user_file']['tmp_name'];
@@ -32,7 +32,7 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 <strong>Please Enter Username.</strong></div>';
 
-  else if (empty($filedesc)) $errMSG = '<div class="alert alert-warning alert-dismissible" role="alert">
+  else if (empty($fileDesc)) $errMSG = '<div class="alert alert-warning alert-dismissible" role="alert">
 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 <strong>Please Enter File Description.</strong></div>';
 
@@ -88,7 +88,7 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
   // if no error occured, continue ....
   if(!isset($errMSG) && $is_moved) {
 
-		$stmt = fileUpload('artist', $dbh, $userfile, $fileExt, $fileSize, 'artist');
+		$stmt = fileUpload('artist', $dbh, $userfile, $fileExt, $fileSize, $fileDesc, 'artist');
 
    if($stmt->execute()) {
 
@@ -139,36 +139,32 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
     <link href="css/bootstrap-formhelpers.min.css" rel="stylesheet">
 
     <style>
-    a.deco-none {
-      color:#777 !important;
-      text-decoration:none;
+      a.deco-none {
+        color:#777 !important;
+        text-decoration:none;
+      }
+      .bg-menu:hover {
+        background-color:#0079C1;
+        color:#FFFFFF;
+      }
+      .clickable {
+        cursor:pointer;
+      }
+    </style>
 
-  }
-
-
-  .bg-menu:hover {
-      background-color:#0079C1;
-      color:#FFFFFF;
-  }
-
-  .clickable {
-      cursor:pointer;
-  }
-</style>
-
-<style>
-.nav-tabs { border-bottom: 1px solid #DDD; }
-.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover { border-width: 0; }
-.nav-tabs > li > a { border: none; color: #666; }
-.nav-tabs > li.active > a, .nav-tabs > li > a:hover { border: none; color: #4285F4 !important; background: transparent; }
-.nav-tabs > li > a::after { content: ""; background: #4285F4; height: 1px; position: absolute; width: 100%; left: 0px; bottom: -1px; transition: all 250ms ease 0s; transform: scale(0); }
-.nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after { transform: scale(1); }
-.tab-nav > li > a::after { background: #21527d none repeat scroll 0% 0%; color: #fff; }
-.tab-pane { padding: 10px 0; }
-.tab-content{padding:20px}
-/*.card {background: #FFF none repeat scroll 0% 0%; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3); margin-bottom: 30px; }*/
-.body{ background: #EDECEC; padding:50px}
-</style>
+  <style>
+    .nav-tabs { border-bottom: 1px solid #DDD; }
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover { border-width: 0; }
+    .nav-tabs > li > a { border: none; color: #666; }
+    .nav-tabs > li.active > a, .nav-tabs > li > a:hover { border: none; color: #4285F4 !important; background: transparent; }
+    .nav-tabs > li > a::after { content: ""; background: #4285F4; height: 1px; position: absolute; width: 100%; left: 0px; bottom: -1px; transition: all 250ms ease 0s; transform: scale(0); }
+    .nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after { transform: scale(1); }
+    .tab-nav > li > a::after { background: #21527d none repeat scroll 0% 0%; color: #fff; }
+    .tab-pane { padding: 10px 0; }
+    .tab-content{padding:20px}
+    /*.card {background: #FFF none repeat scroll 0% 0%; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3); margin-bottom: 30px; }*/
+    .body{ background: #EDECEC; padding:50px}
+  </style>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -325,14 +321,19 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
 
           <!-- Tab panes -->
           <div class="tab-content">
-              <div role="tabpanel" class="tab-pane active" id="audio"></div>
-              <div role="tabpanel" class="tab-pane" id="video"></div>
+          <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active" id="audio">';
+              foreach ($rows as $row) if (in_array($row['type'], $audio_extensions)) echo '<a style="text-decoration:none;" href="artist_files/'.$_GET['id'].'/'.$row['file'].'" target="_blank"><h5>'.$row['type'].'</h5></a>';
+              echo '</div>
+              <div role="tabpanel" class="tab-pane" id="video">';
+              foreach ($rows as $row) if (in_array($row['type'], $video_extensions)) echo '<a style="text-decoration:none;" href="artist_files/'.$_GET['id'].'/'.$row['file'].'" target="_blank"><h5>'.$row['type'].'</h5></a>';
+              echo '</div>
               <div role="tabpanel" class="tab-pane" id="imagem">';
-
-              foreach ($rows as $row) echo '<a style="text-decoration:none;" href="artist_files/'.$_GET["id"].'/'.$row["file"].'"><h5>'.$row["type"].'</h5></a>';
-
-            echo '</div>
-              <div role="tabpanel" class="tab-pane" id="texto"></div>
+              foreach ($rows as $row) if (in_array($row['type'], $img_extensions)) echo '<a style="text-decoration:none;" href="artist_files/'.$_GET['id'].'/'.$row['file'].'" target="_blank"><h5>'.$row['type'].'</h5></a>';
+              echo '</div>
+              <div role="tabpanel" class="tab-pane" id="texto">';
+              foreach ($rows as $row) if (in_array($row['type'], $txt_extensions)) echo '<a style="text-decoration:none;" href="artist_files/'.$_GET['id'].'/'.$row['file'].'" target="_blank"><h5>'.$row['type'].'</h5></a>';
+              echo'</br></div>
           </div>
           </div>';
 
@@ -446,16 +447,20 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
 
                 <!-- Tab panes -->
                 <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="audio"></div>
-                    <div role="tabpanel" class="tab-pane" id="video">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+                    <div role="tabpanel" class="tab-pane active" id="audio">';
+                    foreach ($rows as $row) if (in_array($row['type'], $audio_extensions)) echo '<a style="text-decoration:none;" href="artist_files/'.$_GET['id'].'/'.$row['file'].'" target="_blank"><h5>'.$row['type'].'</h5></a>';
+                    echo '</div>
+                    <div role="tabpanel" class="tab-pane" id="video">';
+                    foreach ($rows as $row) if (in_array($row['type'], $video_extensions)) echo '<a style="text-decoration:none;" href="artist_files/'.$_GET['id'].'/'.$row['file'].'" target="_blank"><h5>'.$row['type'].'</h5></a>';
+                    echo '</div>
                     <div role="tabpanel" class="tab-pane" id="imagem">';
-
-                    foreach ($rows as $row) echo '<a style="text-decoration:none;" href="artist_files/'.$_GET['id'].'/'.$row['file'].'"><h5>'.$row['type'].'</h5></a>';
-
-                  echo '</div>
-                    <div role="tabpanel" class="tab-pane" id="texto">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..</div>
+                    foreach ($rows as $row) if (in_array($row['type'], $img_extensions)) echo '<a style="text-decoration:none;" href="artist_files/'.$_GET['id'].'/'.$row['file'].'" target="_blank"><h5>'.$row['type'].'</h5></a>';
+                    echo '</div>
+                    <div role="tabpanel" class="tab-pane" id="texto">';
+                    foreach ($rows as $row) if (in_array($row['type'], $txt_extensions)) echo '<a style="text-decoration:none;" href="artist_files/'.$_GET['id'].'/'.$row['file'].'" target="_blank"><h5>'.$row['type'].'</h5></a>';
+                    echo'</br></div>
                 </div>
-      </div>';
+                </div>';
 
 
 				}

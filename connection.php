@@ -815,35 +815,38 @@ function uploadDir($upload_dir, $id){
 
  }
 
-function fileUpload($type, $dbh, $userfile, $fileExt, $fileSize, $category){
+function fileUpload($type, $dbh, $userfile, $fileExt, $fileSize, $fileDesc, $category){
 
 		 switch ($type) {
 		 	case 'music':
-				$sth = $dbh->prepare('INSERT INTO file(file,type,size) VALUES(:ufile, :ext, :size);
+				$sth = $dbh->prepare('INSERT INTO file(file,type,size,desc) VALUES(:ufile, :ext, :size, :desc);
 			 												 INSERT INTO file_musica(id_file,id_musica,category) VALUES(LAST_INSERT_ID(), :idmusica, :category)');
 			 $sth->bindParam(':ufile',$userfile);
 			 $sth->bindParam(':ext',$fileExt);
 			 $sth->bindParam(':size',$fileSize);
+			 $sth->bindParam(':desc', $fileDesc);
 			 $sth->bindParam(':idmusica',$_GET['id']);
 			 $sth->bindParam(':category',$category);
 		 		break;
 
 			case 'artist':
-				$sth = $dbh->prepare('INSERT INTO file(file,type,size) VALUES(:ufile, :ext, :size);
+				$sth = $dbh->prepare('INSERT INTO file(file,type,size,desc) VALUES(:ufile, :ext, :size, :desc);
 				 												 INSERT INTO file_artista(id_file,id_artista,category) VALUES(LAST_INSERT_ID(), :idartista, :category)');
 			 $sth->bindParam(':ufile',$userfile);
 			 $sth->bindParam(':ext',$fileExt);
 			 $sth->bindParam(':size',$fileSize);
 			 $sth->bindParam(':idartista',$_GET['id']);
+			 $sth->bindParam(':desc', $fileDesc);
 			 $sth->bindParam(':category',$category);
 			 		break;
 
 			case 'album':
-			$sth = $dbh->prepare('INSERT INTO file(file,type,size) VALUES(:ufile, :ext, :size);
+			$sth = $dbh->prepare('INSERT INTO file(file,type,size,desc) VALUES(:ufile, :ext, :size, :desc);
 		 												 INSERT INTO file_album(id_file,id_album,category) VALUES(LAST_INSERT_ID(), :idalbum, :category)');
 		  $sth->bindParam(':ufile',$userfile);
 		  $sth->bindParam(':ext',$fileExt);
 		  $sth->bindParam(':size',$fileSize);
+			$sth->bindParam(':desc', $fileDesc);
 		  $sth->bindParam(':idalbum',$_GET['id']);
 		  $sth->bindParam(':category',$category);
 				break;
