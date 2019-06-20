@@ -10,10 +10,10 @@
 DEFINE('DB_USER', 'rodrigo');
 DEFINE('DB_PASSWORD', 'hqWxD3FN');
 DEFINE('DB_HOST', '127.0.0.1');
-DEFINE('DB_NAME', 'musicrepo2');
+DEFINE('DB_NAME', 'musicrepo');
 DEFINE('DB_CHARSET', 'utf8');
 
-// $link will contain a resource link to the database
+// $dbh will contain a resource link to the database
 
 function openConnection(){
 
