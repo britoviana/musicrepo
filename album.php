@@ -34,11 +34,11 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
 
   else if (empty($fileDesc)) $errMSG = '<div class="alert alert-warning alert-dismissible" role="alert">
 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-<strong>Please Enter File Description.</strong></div>';
+<strong>Favor preencher descrição de arquivo.</strong></div>';
 
   else if (empty($imgFile)) $errMSG = '<div class="alert alert-warning alert-dismissible" role="alert">
 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-<strong>"Please Select File.</strong></div>';
+<strong>Favor selecionar arquivo.</strong></div>';
 
  else {
    // upload directory
@@ -65,7 +65,7 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
          if ($fileSize < 5*MB && $fileSize > 0) $is_moved = move_uploaded_file($tmp_file,$upload_dir.$userfile);
          else $errMSG = '<div class="alert alert-warning alert-dismissible" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <strong>Sorry, your file is too large. Max 5MB.</strong></div>';
+                        <strong>Desculpe, arquivo muito grande. Máx. 5Mb.</strong></div>';
 
       } else {
          die("Upload failed with error code " . $_FILES['user_file']['error']);
@@ -76,7 +76,7 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
    else{
     $errMSG = '<div class="alert alert-warning alert-dismissible" role="alert">
               <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <strong>Sorry, only JPG, JPEG, PNG, GIF & PDF files are allowed.</strong></div>';
+              <strong>Desculpe, somente arquivos de áudio, vídeo, imagem e texto são permitidos.</strong></div>';
 
    }
   }
