@@ -74,7 +74,7 @@
         </select>
         <select id="ano_lanc" name="ano_lanc[]" class="form-control selectpicker" data-live-search="true" data-width="81%" data-none-selected-text="Selecionar ano de lançamento" multiple>';
 
-            <?php showReleasedYear(); ?>
+            <?php showReleasedYear('musica'); ?>
 
         </select>
       </div>
@@ -232,7 +232,7 @@
       $id_compositor_params = implode(', ', array_values($_GET['compositor']));
       $id_compositor_params = '('.$id_compositor_params.')';
 
-      if(stristr($query,'WHERE')) $query .= " " .$_GET['andor_compositor']. " mc.id_compositor in " .$id_compositor_params;
+      if(stristr($query,'WHERE')) $query .= " " .$_GET['andor_compositor']. " mc.id_compositor IN " .$id_compositor_params;
       else $query .= " WHERE mc.id_compositor in " .$id_compositor_params;
     }
 
@@ -254,6 +254,7 @@
     }
 
     if (!(stristr($query,'ORDER BY'))) $query .= " GROUP BY m.id_musica ORDER BY m.nome_musica";
+
 
     // conta quantos compositores uma música tem
     $query2 = "SELECT count(m.id_musica) as compositores, m.id_musica, m.nome_musica FROM artista AS a
@@ -315,10 +316,10 @@ $rows2 = $sth2->fetchAll(PDO::FETCH_ASSOC);
 foreach($rows as $row){
   echo '<tr class="clickableRow" data-href="music.php?id='. $row['id_musica'] .'"><td class="col-lg-6 col-md-6">' .
   $row['nome_musica'] . '</td><td>';
-  if (in_array ($row[id_musica], $id_musica)) echo implode(', ', $composers[$row[id_musica]]) .  '</td>';
+  if (in_array ($row['id_musica'], $id_musica)) echo implode(', ', $composers[$row['id_musica']]) .  '</td>';
   else echo $row['nome'] . '</td>';
   echo '<td class="col-lg-1 col-md-1">';
-  if ($_SESSION['nivel_acesso'] == 1) echo '<center><a href="updatemusic.php?id='. $row[id_musica] .'&album='.$row[id_album].'"><span class="glyphicon glyphicon-pencil" aria-hidden="true" style="color:#f0ad4e"></span></a></center></td>';
+  if ($_SESSION['nivel_acesso'] == 1) echo '<center><a href="updatemusic.php?id='. $row['id_musica'] .'&album='.$row['id_album'].'"><span class="glyphicon glyphicon-pencil" aria-hidden="true" style="color:#f0ad4e"></span></a></center></td>';
   echo '</tr>';
 }
   echo '</table>';

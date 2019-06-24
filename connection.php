@@ -76,11 +76,17 @@ function openConnection(){
 
 	}
 
-	function showReleasedYear() {
+	function showReleasedYear($option) {
 
 		$dbh = openConnection();
-
-		$query = "SELECT DISTINCT ano_lanc from musica ORDER BY ano_lanc";
+		switch ($option) {
+		case 'musica':
+			$query = "SELECT DISTINCT ano_lanc from musica ORDER BY ano_lanc";
+			break;
+		case 'album':
+			$query = "SELECT DISTINCT ano_lanc from album ORDER BY ano_lanc";
+			break;
+		}
 
 		$sth = $dbh->prepare($query);
 		$response = $sth->execute();

@@ -49,13 +49,13 @@
       </div>
       </form>
     </br>
-      <form action="searchalbum.php?busca&genero&ano_lanc&compositor" method="get" accept-charset="utf8" role="search">
+      <form action="searchalbum.php?busca&genero&ano_lanc" method="get" accept-charset="utf8" role="search">
         <div class="row">
           <div class="col-lg-12 col-md-12">
           <div class="form-group">
-            <select class="form-control selectpicker" data-style="btn-info" data-width="17%">
-              <option value="or">OU</option>
-              <option value="and">E</option>
+            <select name="andor_genero" class="form-control selectpicker" data-style="btn-info" data-width="17%">
+              <option value="OR">OU</option>
+              <option value="AND">E</option>
             </select>
           <select id="genero" name="genero[]" class="form-control selectpicker" data-width="81%" data-live-search="true" data-none-selected-text="Buscar por gêneros" multiple>';
 
@@ -69,13 +69,13 @@
     <div class="row">
       <div class="col-lg-12 col-md-12">
       <div class="form-group">
-        <select class="form-control selectpicker" data-style="btn-info" data-width="17%">
-          <option value="or">OU</option>
-          <option value="and">E</option>
+        <select name="andor_ano_lanc" class="form-control selectpicker" data-style="btn-info" data-width="17%">
+          <option value="OR">OU</option>
+          <option value="AND">E</option>
         </select>
           <select id="ano_lanc" name="ano_lanc[]" class="form-control selectpicker" data-width="81%" data-live-search="true" data-none-selected-text="Buscar por ano de lançamento" multiple>';
 
-              <?php showReleasedYear(); ?>
+              <?php showReleasedYear('album'); ?>
 
           </select>
         </div>
@@ -205,11 +205,17 @@
 
     } else {
 
+      $query = "SELECT al.id_album, al.nome_album, a.nome, g.id_genero from album as al
+                JOIN album_genero as ag ON al.id_album = ag.id_album
+                JOIN genero as g ON ag.genero = g.id_genero
+                JOIN album_artista AS aa ON aa.id_album = al.id_album
+                JOIN artista AS a ON a.id_artista = aa.id_artista";
+
       if (isset($_GET['genero'])) {
         $id_genero_params = implode(', ', array_values($_GET['genero']));
         $id_genero_params = '('.$id_genero_params.')';
 
-        if(stristr($query,'WHERE')) $query .= " OR g.id_genero IN " .$id_genero_params;
+        if(stristr($query,'WHERE')) $query .= " " .$_GET['andor_genero']. " g.id_genero IN " .$id_genero_params;
         else $query .= " WHERE g.id_genero IN " .$id_genero_params;
       }
 
@@ -217,18 +223,12 @@
         $ano_lanc_params = implode(', ', array_values($_GET['ano_lanc']));
         $ano_lanc_params = '('.$ano_lanc_params.')';
 
-        if(stristr($query,'WHERE')) $query .= " OR al.ano_lanc IN " .$ano_lanc_params;
+        if(stristr($query,'WHERE')) $query .= " " .$_GET['andor_ano_lanc']. " al.ano_lanc IN " .$ano_lanc_params;
         else $query .= " WHERE al.ano_lanc IN " .$ano_lanc_params;
 
       }
 
       if (!(stristr($query,'ORDER BY'))) $query .= " GROUP BY al.id_album ORDER BY al.nome_album";
-
-      $query = "SELECT al.id_album, al.nome_album, a.nome, g.id_genero from album as al
-                JOIN album_genero as ag ON al.id_album = ag.id_album
-                JOIN genero as g ON ag.genero = g.id_genero
-                JOIN album_artista AS aa ON aa.id_album = al.id_album
-                JOIN artista AS a ON a.id_artista = aa.id_artista";
 
       $query2 = "SELECT count(aa.id_artista) as artistas, al.id_album, al.nome_album from artista as a
                  JOIN album_artista as aa ON a.id_artista = aa.id_artista
