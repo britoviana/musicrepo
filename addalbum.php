@@ -244,11 +244,6 @@
 
 					      $sth = $dbh->prepare($query);
 
-					      // VER SE O CAMPO ID_ARTISTA CONTINUARA EM ALBUM
-					      $idd = 2;
-					      $sth->bindParam(':id_artista', $idd);
-					      ///////---------------------/////////////////////
-
 					      $sth->bindParam(':nome', $nome);
 					      $sth->bindParam(':faixas', $num_faixas);
 					      $sth->bindParam(':gravadora', $gravadora);

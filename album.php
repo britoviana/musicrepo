@@ -21,7 +21,6 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
 
 	 $filename = $_GET['id'];// file name
    $fileDesc = $_POST['file_desc'];// file description
-
    $imgFile = $_FILES['user_file']['name'];
    $tmp_file = $_FILES['user_file']['tmp_name'];
    $fileSize = $_FILES['user_file']['size'];
@@ -86,8 +85,7 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
 
 		$stmt = fileUpload('album', $dbh, $userfile, $fileExt, $fileSize, $fileDesc, 'album');
 
-
-   if($stmt->execute()) {
+    if($stmt->execute()) {
 
     $successMSG = '<div class="alert alert-success alert-dismissible" role="alert">
 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -294,16 +292,16 @@ $audio_extensions = array('mp3', 'wav', 'mid', 'wma', 'm4a');
           <!-- Tab panes -->
           <div class="tab-content">
               <div role="tabpanel" class="tab-pane active" id="audio">';
-              foreach ($rows as $row) if (in_array($row['type'], $audio_extensions)) echo '<a style="text-decoration:none;" href="album_files/'.$row['id_album'].'/'.$row['file'].'" target="_blank"><h5>'.$row['type'].'</h5></a>';
+              foreach ($rows as $row) if (in_array($row['type'], $audio_extensions)) echo '<a style="text-decoration:none;" href="album_files/'.$row['id_album'].'/'.$row['file'].'" target="_blank"><h5>'.$row['description'].'</h5></a>';
               echo '</br></div>
               <div role="tabpanel" class="tab-pane" id="video">';
-              foreach ($rows as $row) if (in_array($row['type'], $video_extensions)) echo '<a style="text-decoration:none;" href="album_files/'.$row['id_album'].'/'.$row['file'].'" target="_blank"><h5>'.$row['type'].'</h5></a>';
+              foreach ($rows as $row) if (in_array($row['type'], $video_extensions)) echo '<a style="text-decoration:none;" href="album_files/'.$row['id_album'].'/'.$row['file'].'" target="_blank"><h5>'.$row['description'].'</h5></a>';
               echo '</br></div>
               <div role="tabpanel" class="tab-pane" id="imagem">';
-              foreach ($rows as $row) if (in_array($row['type'], $img_extensions)) echo '<a style="text-decoration:none;" href="album_files/'.$row['id_album'].'/'.$row['file'].'" target="_blank"><h5>'.$row['type'].'</h5></a>';
+              foreach ($rows as $row) if (in_array($row['type'], $img_extensions)) echo '<a style="text-decoration:none;" href="album_files/'.$row['id_album'].'/'.$row['file'].'" target="_blank"><h5>'.$row['description'].'</h5></a>';
               echo '</br></div>
               <div role="tabpanel" class="tab-pane" id="texto">';
-              foreach ($rows as $row) if (in_array($row['type'], $txt_extensions)) echo '<a style="text-decoration:none;" href="album_files/'.$row['id_album'].'/'.$row['file'].'" target="_blank"><h5>'.$row['desc'].'</h5></a>';
+              foreach ($rows as $row) if (in_array($row['type'], $txt_extensions)) echo '<a style="text-decoration:none;" href="album_files/'.$row['id_album'].'/'.$row['file'].'" target="_blank"><h5>'.$row['description'].'</h5></a>';
               echo '</br></div>
               </div>';
 ?>
